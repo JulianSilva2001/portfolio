@@ -21,6 +21,7 @@ function App() {
   };
 
   const [route, setRoute] = useState(() => getRouteFromHash());
+  const [projectFilter, setProjectFilter] = useState("All");
 
   useEffect(() => {
     const handleHashChange = () => setRoute(getRouteFromHash());
@@ -269,36 +270,201 @@ function App() {
           <section className="section">
             <div className="section-header">
               <h3>Projects</h3>
-              <p>Recent builds with measurable impact.</p>
+              <p>Selected work grouped by focus area.</p>
+            </div>
+            <div className="project-filters">
+              {[
+                "All",
+                "AI & ML",
+                "Robotics",
+                "Embedded",
+                "Software",
+              ].map((filter) => (
+                <button
+                  key={filter}
+                  type="button"
+                  className={
+                    projectFilter === filter
+                      ? "filter-chip active"
+                      : "filter-chip"
+                  }
+                  onClick={() => setProjectFilter(filter)}
+                >
+                  {filter}
+                </button>
+              ))}
             </div>
             <div className="project-grid">
-              <article className="project-card">
-                <div className="project-media">Project image</div>
-                <h4>InsightFlow</h4>
-                <p>
-                  Streaming analytics platform with anomaly detection and
-                  explainable dashboards for ops teams.
-                </p>
-                <span className="tag">ML Ops</span>
-              </article>
-              <article className="project-card">
-                <div className="project-media">Project image</div>
-                <h4>SignalScope</h4>
-                <p>
-                  Signal classification toolkit using CNNs and on-device
-                  inference optimizations.
-                </p>
-                <span className="tag">Computer Vision</span>
-              </article>
-              <article className="project-card">
-                <div className="project-media">Project image</div>
-                <h4>Atlas Studio</h4>
-                <p>
-                  Collaboration suite for product teams with real-time updates,
-                  role-based access, and analytics.
-                </p>
-                <span className="tag">Full Stack</span>
-              </article>
+              {[
+                {
+                  title: "Neurosteered Target Speaker Extraction",
+                  category: "AI & ML",
+                  date: "Ongoing",
+                  description:
+                    "Combines EEG signals with audio processing to isolate a listener's attended speaker in multi-speaker environments.",
+                  tech: "Python, PyTorch, MATLAB, EEGLAB",
+                },
+                {
+                  title: "PCB Defects Detection Device",
+                  category: "AI & ML",
+                  date: "April 2024",
+                  description:
+                    "Detects six PCB defect types and component-placement errors, integrated with a web interface.",
+                  tech: "Python, YOLOv8, PyTorch, OpenCV, Altium, SolidWorks",
+                },
+                {
+                  title:
+                    "Tea Classification and Signature Estimation (Paraqum)",
+                  category: "AI & ML",
+                  date: "December 2024",
+                  description:
+                    "Classifies tea grades and estimates visual signatures for automated quality assessment.",
+                  tech: "Python, TensorFlow, PyTorch",
+                },
+                {
+                  title:
+                    "Panorama Stitching with Feature Matching (GNN)",
+                  category: "AI & ML",
+                  date: "November 2024",
+                  description:
+                    "Uses SuperGlue for accurate feature matching and seamless blending across viewpoints.",
+                  tech: "SuperGlue, Python, OpenCV, PyTorch, RANSAC",
+                },
+                {
+                  title:
+                    "Bidirectional Mapping on Multimodal Neuroimaging Data",
+                  category: "AI & ML",
+                  date: "Ongoing",
+                  description:
+                    "Contrastive model linking brain structure and function using HCP/OASIS datasets.",
+                  tech: "Python, PyTorch",
+                },
+                {
+                  title: "OboMouse - Micromouse Robot",
+                  category: "Robotics",
+                  date: "Champions (MicroMaze 2024)",
+                  description:
+                    "Autonomous maze-solving robot using high-speed sensors and optimization algorithms.",
+                  tech: "STM32, C, Altium, SolidWorks",
+                },
+                {
+                  title: "Robot Nanonaut",
+                  category: "Robotics",
+                  date: "—",
+                  description:
+                    "Multifunction robot capable of line-following, obstacle avoidance, gripping, and sound recognition.",
+                  tech: "Arduino, SolidWorks, Altium",
+                },
+                {
+                  title: "SpeedObo - High-Precision Line Follower",
+                  category: "Robotics",
+                  date: "—",
+                  description:
+                    "High-speed, high-accuracy line follower robot for competitive robotics.",
+                  tech: "STM32, C++, Altium, SolidWorks",
+                },
+                {
+                  title: "MetroniX Battlebot",
+                  category: "Robotics",
+                  date: "UWV Robot Battle 2024",
+                  description:
+                    "Combat robot featuring a dynamic lifting mechanism and RF-based control.",
+                  tech: "Arduino, Altium, SolidWorks",
+                },
+                {
+                  title: "Metroband - Tempo-Keeping Wristband",
+                  category: "Embedded",
+                  date: "Mora Ventures 6.0",
+                  description:
+                    "Wearable tempo-keeping wristband with vibration cues and beat detection.",
+                  tech: "C++, Altium, SolidWorks, Python",
+                },
+                {
+                  title: "Analog Guitar Pedal Board",
+                  category: "Embedded",
+                  date: "—",
+                  description:
+                    "Analogue guitar effects pedal board with six sound-processing modules.",
+                  tech: "Analog Circuits, LTspice, Altium",
+                },
+                {
+                  title: "Sportsense - AI Sports Trainer",
+                  category: "Software",
+                  date: "Idealize 2024 (1st Runner-Up)",
+                  description:
+                    "Real-time CV-based posture and movement analyzer for personalized training feedback.",
+                  tech: "Kotlin, Firebase, Mediapipe, YOLO",
+                },
+                {
+                  title: "Signify - Speech-to-Sign-Language AR Glasses",
+                  category: "Software",
+                  date: "VR Cade 2025 (Champions)",
+                  description:
+                    "AR system translating speech into sign language in real-time for hearing-impaired users.",
+                  tech: "Unity, Blender, OpenCV, Mediapipe",
+                },
+                {
+                  title: "PMF Analysis Agent",
+                  category: "Software",
+                  date: "Ongoing",
+                  description:
+                    "AI-driven Product-Market Fit analyzer for SaaS companies using behavioral insights.",
+                  tech: "React, Node.js, LangGraph, Python, AWS",
+                },
+                {
+                  title: "Xplore - Travel Companion App",
+                  category: "Software",
+                  date: "—",
+                  description:
+                    "Mobile app providing personalized travel planning and location-based insights.",
+                  tech: "Next.js, React, Firestore, Firebase Storage",
+                },
+                {
+                  title: "Data Analysis Agent",
+                  category: "Software",
+                  date: "—",
+                  description:
+                    "Intelligent agent for automated analysis and reporting on financial data.",
+                  tech: "React, AWS, Express.js, Python",
+                },
+                {
+                  title:
+                    "Crystal Clear - Platform for Assisting Dyslexic Students",
+                  category: "Software",
+                  date: "Imagine Cup 2024",
+                  description:
+                    "AI-powered personalized learning platform using computer vision and voice recognition.",
+                  tech: "React, React Native, TensorFlow",
+                },
+                {
+                  title: "PCB Company Web Application",
+                  category: "Software",
+                  date: "—",
+                  description:
+                    "Full-stack web system with six subsystems for managing PCB company operations.",
+                  tech: "Java, Spring Boot, MongoDB, React",
+                },
+              ]
+                .filter(
+                  (project) =>
+                    projectFilter === "All" ||
+                    project.category === projectFilter
+                )
+                .map((project) => (
+                  <article
+                    key={`${project.title}-${project.category}`}
+                    className="project-card"
+                  >
+                    <div className="project-media">Project image</div>
+                    <div className="project-meta">
+                      <span className="tag">{project.category}</span>
+                      <span className="project-date">{project.date}</span>
+                    </div>
+                    <h4>{project.title}</h4>
+                    <p>{project.description}</p>
+                    <p className="project-tech">Technologies: {project.tech}</p>
+                  </article>
+                ))}
             </div>
           </section>
         )}
