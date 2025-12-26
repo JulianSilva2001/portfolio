@@ -1,276 +1,416 @@
+import { useEffect, useState } from "react";
 import "./App.css";
+import profileImg from "./assets/Julian Silva.png";
 
 function App() {
-  const navLinks = [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
-    { label: "Experience", href: "#experience" },
-    { label: "Education", href: "#education" },
-    { label: "Tech Stack", href: "#tech" },
-    { label: "Projects", href: "#projects" },
-    { label: "Achievements", href: "#achievements" },
-    { label: "Certifications", href: "#certifications" },
-    { label: "Contact", href: "#contact" },
+  const routes = [
+    { label: "Home", path: "/" },
+    { label: "Projects", path: "/projects" },
+    { label: "Academics", path: "/academics" },
+    { label: "Achievements", path: "/achievements" },
+    { label: "Experiences", path: "/experiences" },
+    { label: "News", path: "/news" },
   ];
 
-  const techStack = [
-    "Python",
-    "TypeScript",
-    "React",
-    "Node.js",
-    "Tailwind",
-    "TensorFlow",
-    "PostgreSQL",
-    "AWS",
-  ];
+  const getRouteFromHash = () => {
+    const hash = window.location.hash.replace(/^#/, "");
+    if (!hash) {
+      return "/";
+    }
+    return routes.some((route) => route.path === hash) ? hash : "/";
+  };
+
+  const [route, setRoute] = useState(() => getRouteFromHash());
+
+  useEffect(() => {
+    const handleHashChange = () => setRoute(getRouteFromHash());
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
 
   return (
     <div className="page">
       <header className="topbar">
-        <div className="brand">Portfolio</div>
-        <nav className="nav">
-          {navLinks.map((link) => (
-            <a key={link.href} href={link.href}>
-              {link.label}
-            </a>
-          ))}
-        </nav>
-        <a className="cta" href="#contact">
-          Let&apos;s talk
-        </a>
+        <div className="topbar-inner">
+          <div className="brand">Julian Silva</div>
+          <nav className="nav">
+            {routes.map((navRoute) => (
+              <a
+                key={navRoute.path}
+                href={`#${navRoute.path}`}
+                className={route === navRoute.path ? "active" : undefined}
+              >
+                {navRoute.label}
+              </a>
+            ))}
+          </nav>
+        </div>
       </header>
 
       <main>
-        <section id="home" className="hero">
-          <div className="hero-text">
-            <p className="eyebrow">Hello, it&apos;s me</p>
-            <h1>Julian Silva</h1>
-            <h2 className="degree-title">
-              <span className="degree-line">
-                An Electronic and Telecommunication Engineering Undergraduate
-              </span>
-              <span className="degree-line accent">
-                at University of Moratuwa, Sri Lanka
-              </span>
-            </h2>
+        {route === "/" && (
+          <section className="home">
+            <div className="home-grid">
+              <article className="profile-card simple-profile">
+                <div className="simple-photo">
+                  <img src={profileImg} alt="Julian Silva" />
+                </div>
+                <h1 className="simple-name">Julian Silva</h1>
+                <p className="simple-title">Final Year Undergraduate</p>
+                <div className="simple-lines">
+                  <p>
+                    Department of Electronic and Telecommunication Engineering
+                  </p>
+                  <p>University of Moratuwa</p>
+                </div>
+                <div className="simple-interests">
+                  <span className="simple-interest-chip">Machine Learning</span>
+                  <span className="simple-interest-chip">Computer Vision</span>
+                  <span className="simple-interest-chip">HCI</span>
+                  <span className="simple-interest-chip">Embedded Systems</span>
+                  <span className="simple-interest-chip">Robotics</span>
+                </div>
+                <div className="simple-links">
+                  <a href="mailto:silva.ljjp@gmail.com" className="icon-link">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M3 6.75c0-.97.78-1.75 1.75-1.75h14.5C20.22 5 21 5.78 21 6.75v10.5c0 .97-.78 1.75-1.75 1.75H4.75C3.78 19 3 18.22 3 17.25V6.75Zm2.1.2 6.9 4.32 6.9-4.32a.25.25 0 0 0-.15-.05H5.25a.25.25 0 0 0-.15.05Zm13.9 2.07-6.62 4.14a1.75 1.75 0 0 1-1.86 0L3.9 9.02v8.23c0 .41.34.75.75.75h14.5c.41 0 .75-.34.75-.75V9.02Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    silva.ljjp@gmail.com
+                  </a>
+                  <a
+                    href="https://github.com/JulianSilva2001"
+                    className="icon-link"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M12 2.5a9.5 9.5 0 0 0-3 18.5c.48.09.66-.21.66-.47v-1.65c-2.68.6-3.24-1.14-3.24-1.14-.44-1.1-1.07-1.4-1.07-1.4-.88-.6.07-.59.07-.59 1 .07 1.54 1.02 1.54 1.02.88 1.51 2.3 1.07 2.86.82.09-.63.35-1.07.64-1.31-2.14-.24-4.4-1.07-4.4-4.76 0-1.05.38-1.9 1-2.57-.1-.24-.43-1.2.1-2.5 0 0 .82-.26 2.7.98a9.4 9.4 0 0 1 4.9 0c1.88-1.24 2.7-.98 2.7-.98.53 1.3.2 2.26.1 2.5.62.67 1 1.52 1 2.57 0 3.7-2.26 4.51-4.41 4.75.36.31.68.92.68 1.85v2.74c0 .26.18.56.67.47A9.5 9.5 0 0 0 12 2.5Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    GitHub
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/julian-silva-1abb98263/"
+                    className="icon-link"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M4.75 3.5a2.25 2.25 0 1 1 0 4.5 2.25 2.25 0 0 1 0-4.5ZM3.5 9.25h2.5V20.5H3.5V9.25Zm6 0H12v1.6c.35-.62 1.24-1.85 3.1-1.85 2.52 0 3.4 1.66 3.4 3.83v7.67h-2.5v-7.1c0-1.7-.36-2.84-1.98-2.84-1.62 0-2.52 1.23-2.52 2.84v7.1H9.5V9.25Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    LinkedIn
+                  </a>
+                </div>
+              </article>
+            </div>
 
-            <div className="hero-actions">
-              <a className="primary" href="#projects">
-                View Projects
+            <div className="home-lower">
+              <a className="mini-card mini-link" href="#/academics">
+                <div className="mini-card-header">
+                  <span className="mini-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M12 4.25 2.75 9l9.25 4.75L21.25 9 12 4.25Zm-3.5 7.7v3.1c0 .82.46 1.56 1.19 1.93l2.81 1.45c.32.17.69.17 1.01 0l2.81-1.45a2.15 2.15 0 0 0 1.19-1.93v-3.1L12 14.7l-3.5-1.75Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                  <p className="mini-title">Education &amp; Academics</p>
+                </div>
+                <h3>University of Moratuwa, Sri Lanka | 2022 - Present</h3>
+                <p>
+                  B.Sc. Honours in Electronic and Telecommunication Engineering
+                  (CGPA: 3.81/4.00)
+                </p>
+                <span className="mini-meta">
+                  Dean&apos;s List appearance in 5 out of 6 semesters
+                </span>
+                <div className="mini-divider"></div>
+                <h3>St. Anthony&apos;s College, Kandy | 2007 - 2020</h3>
+                <p>
+                  Passed GCE A/L Examination with 3A&apos;s in Physical Stream
+                  (University Entrance Examination)
+                </p>
+                <span className="mini-meta">Z-score: 2.3016</span>
               </a>
-              <a className="ghost" href="#">
-                Download CV
+              <a className="mini-card mini-link" href="#/experiences">
+                <div className="mini-card-header">
+                  <span className="mini-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M9 4.5h6a1.5 1.5 0 0 1 1.5 1.5v1.5H19a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9.5a2 2 0 0 1 2-2h2.5V6A1.5 1.5 0 0 1 9 4.5Zm0 3h6V6H9v1.5Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                  <p className="mini-title">Work Experiences</p>
+                </div>
+                <h3>Embedded &amp; ML Engineering Intern</h3>
+                <p>Paraqum Technologies (Pvt) Ltd, Sri Lanka</p>
+                <div className="mini-divider"></div>
+                <h3>Robotics Instructor</h3>
+                <p>RoboticGen Academy (Pvt) Ltd, Sri Lanka</p>
+                <div className="mini-divider"></div>
+                <h3>Physics Tutor (Edexcel O/L - IGCSE)</h3>
+                <p>Keenbridge English Academy (Pvt) Ltd</p>
+              </a>
+              <a className="mini-card mini-link" href="#/projects">
+                <div className="mini-card-header">
+                  <span className="mini-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M6.5 5.5A1.5 1.5 0 0 1 8 4h8a1.5 1.5 0 0 1 1.5 1.5V19a1 1 0 0 1-1.5.86L12 17.5l-4 2.36A1 1 0 0 1 6.5 19V5.5Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                  <p className="mini-title">Current Project</p>
+                </div>
+                <h3>Project Categories &amp; Tools</h3>
+                <div className="tools-grid">
+                  <div className="tool-block">
+                    <h4>AI and Machine Learning</h4>
+                    <p>TensorFlow, Mediapipe, OpenCV, YOLO, Scikit-learn</p>
+                  </div>
+                  <div className="tool-block">
+                    <h4>Robotics</h4>
+                    <p>ESP32, STM32, Raspberry Pi, Arduino</p>
+                  </div>
+                  <div className="tool-block">
+                    <h4>Embedded Systems</h4>
+                    <p>Matlab, Altium, LTspice, Verilog</p>
+                  </div>
+                  <div className="tool-block">
+                    <h4>Software Development</h4>
+                    <p>Node.js, React.js, React Native, Spring Boot</p>
+                  </div>
+                  <div className="tool-block">
+                    <h4>Programming Languages</h4>
+                    <p>C, C++, Python, Java, Kotlin, JavaScript</p>
+                  </div>
+                  <div className="tool-block">
+                    <h4>Computer-Aided Design</h4>
+                    <p>SolidWorks</p>
+                  </div>
+                </div>
+              </a>
+              <a className="mini-card mini-link" href="#/achievements">
+                <div className="mini-card-header">
+                  <span className="mini-icon mini-icon-accent">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M7 4h10a1 1 0 0 1 1 1v3a4 4 0 0 1-4 4h-1v2.5l2.5 1.5a1 1 0 0 1 .5.86V19H8v-2.64a1 1 0 0 1 .5-.86L11 13.5V12H10a4 4 0 0 1-4-4V5a1 1 0 0 1 1-1Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                  <p className="mini-title">Achievements</p>
+                </div>
+                <div className="achievement-grid">
+                  <div className="achievement-item">
+                    <span className="achievement-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M8 4h8a1 1 0 0 1 1 1v3a4 4 0 0 1-4 4h-2a4 4 0 0 1-4-4V5a1 1 0 0 1 1-1Zm2 9.5V15h4v-1.5a6 6 0 0 1-2 0 6 6 0 0 1-2 0ZM6 6H4a1 1 0 0 0-1 1v1a3 3 0 0 0 3 3h.5A6 6 0 0 1 6 6Zm12 0a6 6 0 0 1-.5 5H18a3 3 0 0 0 3-3V7a1 1 0 0 0-1-1h-2Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+                    <h3>8</h3>
+                    <p>Total Awards</p>
+                  </div>
+                  <div className="achievement-item">
+                    <span className="achievement-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M12 3 7 5.5v4.1c0 3.1 2.2 5.8 5 6.6 2.8-.8 5-3.5 5-6.6V5.5L12 3Zm0 4.2 1.1 2.3 2.5.4-1.8 1.7.4 2.5-2.2-1.2-2.2 1.2.4-2.5-1.8-1.7 2.5-.4L12 7.2Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+                    <h3>2</h3>
+                    <p>Championships</p>
+                  </div>
+                  <div className="achievement-item">
+                    <span className="achievement-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M12 4.5 14.4 9l4.9.7-3.5 3.4.8 4.8L12 15.6 7.4 17.9l.8-4.8-3.5-3.4 4.9-.7L12 4.5Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+                    <h3>1</h3>
+                    <p>1st Runner-Up</p>
+                  </div>
+                  <div className="achievement-item">
+                    <span className="achievement-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M12 5.5 13.8 9l3.8.5-2.8 2.6.7 3.8-3.5-1.9-3.5 1.9.7-3.8-2.8-2.6 3.8-.5L12 5.5Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+                    <h3>1</h3>
+                    <p>2nd Runner-Up</p>
+                  </div>
+                </div>
               </a>
             </div>
-            <div className="socials">
-              <a href="#" aria-label="LinkedIn">
-                in
-              </a>
-              <a href="#" aria-label="GitHub">
-                gh
-              </a>
-              <a href="mailto:hello@example.com" aria-label="Email">
-                mail
-              </a>
-            </div>
-          </div>
-          <div className="hero-card">
-            <div className="portrait">
-              <span>DM</span>
-            </div>
-            <div className="hero-badge">Open to ML + full stack roles</div>
-          </div>
-        </section>
+          </section>
+        )}
 
-        <section id="about" className="section">
-          <div className="section-header">
-            <h3>About</h3>
-            <p>
-              I enjoy translating complex problems into products people love to
-              use. My work blends model experimentation, API engineering, and
-              sleek front-end design.
-            </p>
-          </div>
-          <div className="about-grid">
-            <div className="info-card">
-              <h4>Focus Areas</h4>
-              <ul>
-                <li>End-to-end ML pipelines and deployment</li>
-                <li>Cloud-native web apps and dashboards</li>
-                <li>UX-driven engineering for product teams</li>
-              </ul>
+        {route === "/projects" && (
+          <section className="section">
+            <div className="section-header">
+              <h3>Projects</h3>
+              <p>Recent builds with measurable impact.</p>
             </div>
-            <div className="info-card">
-              <h4>Recent Highlights</h4>
-              <ul>
-                <li>Reduced model inference latency by 35%</li>
-                <li>Designed a zero-downtime data migration</li>
-                <li>Mentored 6 junior developers</li>
-              </ul>
+            <div className="project-grid">
+              <article className="project-card">
+                <div className="project-media">Project image</div>
+                <h4>InsightFlow</h4>
+                <p>
+                  Streaming analytics platform with anomaly detection and
+                  explainable dashboards for ops teams.
+                </p>
+                <span className="tag">ML Ops</span>
+              </article>
+              <article className="project-card">
+                <div className="project-media">Project image</div>
+                <h4>SignalScope</h4>
+                <p>
+                  Signal classification toolkit using CNNs and on-device
+                  inference optimizations.
+                </p>
+                <span className="tag">Computer Vision</span>
+              </article>
+              <article className="project-card">
+                <div className="project-media">Project image</div>
+                <h4>Atlas Studio</h4>
+                <p>
+                  Collaboration suite for product teams with real-time updates,
+                  role-based access, and analytics.
+                </p>
+                <span className="tag">Full Stack</span>
+              </article>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
-        <section id="experience" className="section">
-          <div className="section-header">
-            <h3>Experience</h3>
-            <p>Hands-on experience delivering production-grade systems.</p>
-          </div>
-          <div className="timeline">
-            <div className="timeline-item">
-              <div>
-                <h4>Machine Learning Engineer</h4>
-                <p className="muted">Nova Labs · 2023 — Present</p>
+        {route === "/academics" && (
+          <section className="section">
+            <div className="section-header">
+              <h3>Academics</h3>
+              <p>Education milestones and academic highlights.</p>
+            </div>
+            <div className="list-grid">
+              <div className="list-item">
+                <h4>University of Moratuwa, Sri Lanka — 2022 - Present</h4>
+                <p>
+                  B.Sc. Honours in Electronic and Telecommunication Engineering
+                  (CGPA: 3.81/4.00)
+                </p>
+                <p className="muted">
+                  Dean&apos;s List appearance in 5 out of 6 semesters
+                </p>
               </div>
-              <p>
-                Built forecasting services, automated feature pipelines, and
-                deployed real-time monitoring across ML workflows.
-              </p>
-            </div>
-            <div className="timeline-item">
-              <div>
-                <h4>Full Stack Developer</h4>
-                <p className="muted">Pulse Systems · 2021 — 2023</p>
+              <div className="list-item">
+                <h4>St. Anthony&apos;s College, Kandy — 2007 - 2020</h4>
+                <p>
+                  Passed GCE A/L Examination with 3A&apos;s in Physical Stream
+                  (University Entrance Examination)
+                </p>
+                <p className="muted">Z-score: 2.3016</p>
               </div>
-              <p>
-                Delivered customer portals, internal dashboards, and API
-                services used by 30k+ monthly users.
-              </p>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
-        <section id="education" className="section">
-          <div className="section-header">
-            <h3>Education</h3>
-            <p>Foundation in electronics, telecom, and data science.</p>
-          </div>
-          <div className="timeline">
-            <div className="timeline-item">
-              <div>
-                <h4>BSc in Electronics &amp; Telecommunications</h4>
-                <p className="muted">University of Example · 2017 — 2021</p>
+        {route === "/experiences" && (
+          <section className="section">
+            <div className="section-header">
+              <h3>Experiences</h3>
+              <p>Hands-on experience delivering production-grade systems.</p>
+            </div>
+            <div className="timeline">
+              <div className="timeline-item">
+                <div>
+                  <h4>Machine Learning Engineer</h4>
+                  <p className="muted">Nova Labs Aú 2023 ƒ?" Present</p>
+                </div>
+                <p>
+                  Built forecasting services, automated feature pipelines, and
+                  deployed real-time monitoring across ML workflows.
+                </p>
               </div>
-              <p>
-                Final-year research on intelligent network optimization and
-                real-time analytics.
-              </p>
+              <div className="timeline-item">
+                <div>
+                  <h4>Full Stack Developer</h4>
+                  <p className="muted">Pulse Systems Aú 2021 ƒ?" 2023</p>
+                </div>
+                <p>
+                  Delivered customer portals, internal dashboards, and API
+                  services used by 30k+ monthly users.
+                </p>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
-        <section id="tech" className="section">
-          <div className="section-header">
-            <h3>Tech Stack</h3>
-            <p>Tooling I rely on to build, ship, and scale.</p>
-          </div>
-          <div className="chip-grid">
-            {techStack.map((tech) => (
-              <span key={tech} className="chip">
-                {tech}
-              </span>
-            ))}
-          </div>
-        </section>
+        {route === "/achievements" && (
+          <section className="section">
+            <div className="section-header">
+              <h3>Achievements</h3>
+              <p>Milestones I&apos;m proud of.</p>
+            </div>
+            <div className="list-grid">
+              <div className="list-item">
+                <h4>Best Innovation Award</h4>
+                <p>Recognized for a predictive maintenance solution.</p>
+              </div>
+              <div className="list-item">
+                <h4>Top 1% Kaggle Ranking</h4>
+                <p>Active competitor in tabular and vision challenges.</p>
+              </div>
+              <div className="list-item">
+                <h4>Speaker</h4>
+                <p>Presented on ML deployment at regional tech meets.</p>
+              </div>
+            </div>
+          </section>
+        )}
 
-        <section id="projects" className="section">
-          <div className="section-header">
-            <h3>Projects</h3>
-            <p>Recent builds with measurable impact.</p>
-          </div>
-          <div className="project-grid">
-            <article className="project-card">
-              <h4>InsightFlow</h4>
-              <p>
-                Streaming analytics platform with anomaly detection and
-                explainable dashboards for ops teams.
-              </p>
-              <span className="tag">ML Ops</span>
-            </article>
-            <article className="project-card">
-              <h4>SignalScope</h4>
-              <p>
-                Signal classification toolkit using CNNs and on-device inference
-                optimizations.
-              </p>
-              <span className="tag">Computer Vision</span>
-            </article>
-            <article className="project-card">
-              <h4>Atlas Studio</h4>
-              <p>
-                Collaboration suite for product teams with real-time updates,
-                role-based access, and analytics.
-              </p>
-              <span className="tag">Full Stack</span>
-            </article>
-          </div>
-        </section>
-
-        <section id="achievements" className="section">
-          <div className="section-header">
-            <h3>Achievements</h3>
-            <p>Milestones I&apos;m proud of.</p>
-          </div>
-          <div className="list-grid">
-            <div className="list-item">
-              <h4>Best Innovation Award</h4>
-              <p>Recognized for a predictive maintenance solution.</p>
+        {route === "/news" && (
+          <section className="section">
+            <div className="section-header">
+              <h3>News</h3>
+              <p>Recent updates, events, and publications.</p>
             </div>
-            <div className="list-item">
-              <h4>Top 1% Kaggle Ranking</h4>
-              <p>Active competitor in tabular and vision challenges.</p>
+            <div className="list-grid">
+              <div className="list-item">
+                <h4>Volunteer Developer for FloodSupport Sri Lanka</h4>
+                <p>
+                  Built a disaster analytics dashboard for emergency response
+                  coordination.
+                </p>
+              </div>
+              <div className="list-item">
+                <h4>DVCon India 2025 - 1st Runners-Up</h4>
+                <p>Recognized for an FPGA-based inference accelerator.</p>
+              </div>
+              <div className="list-item">
+                <h4>Campus Tech Talk</h4>
+                <p>Presented on deploying ML models on edge devices.</p>
+              </div>
             </div>
-            <div className="list-item">
-              <h4>Speaker</h4>
-              <p>Presented on ML deployment at regional tech meets.</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="certifications" className="section">
-          <div className="section-header">
-            <h3>Certifications</h3>
-            <p>Credentials that keep my skills current.</p>
-          </div>
-          <div className="list-grid">
-            <div className="list-item">
-              <h4>AWS Machine Learning Specialty</h4>
-              <p>Amazon Web Services · 2024</p>
-            </div>
-            <div className="list-item">
-              <h4>Google Data Analytics</h4>
-              <p>Coursera · 2023</p>
-            </div>
-            <div className="list-item">
-              <h4>DeepLearning.AI TensorFlow</h4>
-              <p>DeepLearning.AI · 2022</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="contact" className="section contact">
-          <div className="section-header">
-            <h3>Contact</h3>
-            <p>Let&apos;s build something bold together.</p>
-          </div>
-          <div className="contact-card">
-            <div>
-              <h4>Let&apos;s connect</h4>
-              <p className="muted">
-                Reach out for collaborations, contract work, or full-time
-                opportunities.
-              </p>
-            </div>
-            <div className="contact-actions">
-              <a className="primary" href="mailto:hello@example.com">
-                Email me
-              </a>
-              <a className="ghost" href="#">
-                Schedule a call
-              </a>
-            </div>
-          </div>
-        </section>
+          </section>
+        )}
       </main>
     </div>
   );
