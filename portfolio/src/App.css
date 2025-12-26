@@ -1,7 +1,7 @@
 .page {
   position: relative;
   min-height: 100vh;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 32px 24px 120px;
   z-index: 1;
@@ -118,6 +118,18 @@
 .hero .accent {
   color: var(--accent);
   font-weight: 600;
+}
+
+.degree-title {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--text-subtle);
+}
+
+.degree-line {
+  display: block;
+  font-size: 1.1rem;
 }
 
 .summary {

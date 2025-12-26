@@ -45,16 +45,15 @@ function App() {
           <div className="hero-text">
             <p className="eyebrow">Hello, it&apos;s me</p>
             <h1>Julian Silva</h1>
-            <h2>
-              Machine Learning Engineer
-              <span className="accent"> &amp; Full Stack Builder</span>
+            <h2 className="degree-title">
+              <span className="degree-line">
+                An Electronic and Telecommunication Engineering Undergraduate
+              </span>
+              <span className="degree-line accent">
+                at University of Moratuwa, Sri Lanka
+              </span>
             </h2>
-            <p className="summary">
-              I craft AI-powered products and reliable web platforms, blending
-              applied research with clean, scalable engineering. Currently
-              focused on ML systems, data storytelling, and delightful user
-              experiences.
-            </p>
+
             <div className="hero-actions">
               <a className="primary" href="#projects">
                 View Projects
