@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import profileImg from "./assets/Julian Silva.png";
+import pcbDefectsImg from "./assets/Projects/PCB Defects/main.jpg";
+import teaDefectsImg from "./assets/Projects/Tea/main.png";
 
 function App() {
   const routes = [
@@ -273,26 +275,22 @@ function App() {
               <p>Selected work grouped by focus area.</p>
             </div>
             <div className="project-filters">
-              {[
-                "All",
-                "AI & ML",
-                "Robotics",
-                "Embedded",
-                "Software",
-              ].map((filter) => (
-                <button
-                  key={filter}
-                  type="button"
-                  className={
-                    projectFilter === filter
-                      ? "filter-chip active"
-                      : "filter-chip"
-                  }
-                  onClick={() => setProjectFilter(filter)}
-                >
-                  {filter}
-                </button>
-              ))}
+              {["All", "AI & ML", "Robotics", "Embedded", "Software"].map(
+                (filter) => (
+                  <button
+                    key={filter}
+                    type="button"
+                    className={
+                      projectFilter === filter
+                        ? "filter-chip active"
+                        : "filter-chip"
+                    }
+                    onClick={() => setProjectFilter(filter)}
+                  >
+                    {filter}
+                  </button>
+                )
+              )}
             </div>
             <div className="project-grid">
               {[
@@ -311,6 +309,7 @@ function App() {
                   description:
                     "Detects six PCB defect types and component-placement errors, integrated with a web interface.",
                   tech: "Python, YOLOv8, PyTorch, OpenCV, Altium, SolidWorks",
+                  image: pcbDefectsImg,
                 },
                 {
                   title:
@@ -320,10 +319,10 @@ function App() {
                   description:
                     "Classifies tea grades and estimates visual signatures for automated quality assessment.",
                   tech: "Python, TensorFlow, PyTorch",
+                  image: teaDefectsImg,
                 },
                 {
-                  title:
-                    "Panorama Stitching with Feature Matching (GNN)",
+                  title: "Panorama Stitching with Feature Matching (GNN)",
                   category: "AI & ML",
                   date: "November 2024",
                   description:
@@ -455,7 +454,13 @@ function App() {
                     key={`${project.title}-${project.category}`}
                     className="project-card"
                   >
-                    <div className="project-media">Project image</div>
+                    <div className="project-media">
+                      {project.image ? (
+                        <img src={project.image} alt={project.title} />
+                      ) : (
+                        "Project image"
+                      )}
+                    </div>
                     <div className="project-meta">
                       <span className="tag">{project.category}</span>
                       <span className="project-date">{project.date}</span>
@@ -498,7 +503,7 @@ function App() {
           </section>
         )}
 
-        {route === "/experiences" && (
+        {/* {route === "/experiences" && (
           <section className="section">
             <div className="section-header">
               <h3>Experiences</h3>
@@ -527,9 +532,9 @@ function App() {
               </div>
             </div>
           </section>
-        )}
+        )} */}
 
-        {route === "/achievements" && (
+        {/* {route === "/achievements" && (
           <section className="section">
             <div className="section-header">
               <h3>Achievements</h3>
@@ -550,33 +555,33 @@ function App() {
               </div>
             </div>
           </section>
-        )}
+        )} */}
 
-        {route === "/news" && (
-          <section className="section">
-            <div className="section-header">
-              <h3>News</h3>
-              <p>Recent updates, events, and publications.</p>
-            </div>
-            <div className="list-grid">
-              <div className="list-item">
-                <h4>Volunteer Developer for FloodSupport Sri Lanka</h4>
-                <p>
-                  Built a disaster analytics dashboard for emergency response
-                  coordination.
-                </p>
-              </div>
-              <div className="list-item">
-                <h4>DVCon India 2025 - 1st Runners-Up</h4>
-                <p>Recognized for an FPGA-based inference accelerator.</p>
-              </div>
-              <div className="list-item">
-                <h4>Campus Tech Talk</h4>
-                <p>Presented on deploying ML models on edge devices.</p>
-              </div>
-            </div>
-          </section>
-        )}
+        {/* {route === "/news" && (
+          // <section className="section">
+          //   <div className="section-header">
+          //     <h3>News</h3>
+          //     <p>Recent updates, events, and publications.</p>
+          //   </div>
+          //   <div className="list-grid">
+          //     <div className="list-item">
+          //       <h4>Volunteer Developer for FloodSupport Sri Lanka</h4>
+          //       <p>
+          //         Built a disaster analytics dashboard for emergency response
+          //         coordination.
+          //       </p>
+          //     </div>
+          //     <div className="list-item">
+          //       <h4>DVCon India 2025 - 1st Runners-Up</h4>
+          //       <p>Recognized for an FPGA-based inference accelerator.</p>
+          //     </div>
+          //     <div className="list-item">
+          //       <h4>Campus Tech Talk</h4>
+          //       <p>Presented on deploying ML models on edge devices.</p>
+          //     </div>
+          //   </div>
+          // </section>
+        )} */}
       </main>
     </div>
   );
