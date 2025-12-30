@@ -1,8 +1,44 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import profileImg from "./assets/Julian Silva.png";
+import battlebotImg from "./assets/Projects/Battlebot/main.jpeg";
+import dyslexiaImg from "./assets/Projects/Dyslexia/main.jpg";
 import pcbDefectsImg from "./assets/Projects/PCB Defects/main.jpg";
+import panoramaImg from "./assets/Projects/Panorama/main.jpg";
 import teaDefectsImg from "./assets/Projects/Tea/main.png";
+import NSImage from "./assets/Projects/EEG_Fusion/main.png";
+import guitarPedalImg from "./assets/Projects/GuitarPedal/main.png";
+import metrobandImg from "./assets/Projects/Metroband/main.png";
+import micromouseImg from "./assets/Projects/Micromouse/main.jpeg";
+import nanonautImg from "./assets/Projects/Nanonaut/main.jpg";
+import pcbCompanyImg from "./assets/Projects/PCB_company/main.jpg";
+import pmfAnalyzerImg from "./assets/Projects/PMF_Analyzer/main.png";
+import signifyImg from "./assets/Projects/Signify/main.png";
+import sportsenseImg from "./assets/Projects/Sportsense/main.jpg";
+import xploreImg from "./assets/Projects/Xplore/main.jpg";
+import speedoboImg from "./assets/Projects/SpeedObo/main.jpeg";
+import achievementBattlebotImg from "./assets/Achievements/battlebot.jpeg";
+import achievementBrainstormImg from "./assets/Achievements/Brainstorm.jpeg";
+import achievementDeansListImg from "./assets/Achievements/deansList.png";
+import achievementIdealizeRunnerUpImg from "./assets/Achievements/Idealize_2.jpeg";
+import achievementIdealizeConceptualistImg from "./assets/Achievements/Idealize_conceptualist.jpeg";
+import achievementIESLImg from "./assets/Achievements/IESL.jpeg";
+import achievementImagineCupImg from "./assets/Achievements/imagineCup.png";
+import achievementMicroMazeImg from "./assets/Achievements/micromaze.jpeg";
+import achievementPhysicsImg from "./assets/Achievements/Physics.jpg";
+import achievementRobofestImg from "./assets/Achievements/robofest.jpeg";
+import achievementSparkImg from "./assets/Achievements/spark.jpg";
+import achievementVRCadeImg from "./assets/Achievements/VRCade.jpeg";
+import achievementBasketballImg from "./assets/Achievements/basketball.png";
+import achievementBylImg from "./assets/Achievements/byl.jpeg";
+import achievementChessImg from "./assets/Achievements/chess.png";
+import achievementChoirImg from "./assets/Achievements/choir.jpg";
+import achievementChoir2Img from "./assets/Achievements/choir2.jpg";
+import achievementIgvImg from "./assets/Achievements/igv.jpeg";
+import achievementMusicianImg from "./assets/Achievements/musician.jpeg";
+import achievementIdealizeImg from "./assets/Achievements/amplifier.jpg";
+import achievementChathurmanaImg from "./assets/Achievements/chathurmana.jpeg";
+import slamImg from "./assets/Projects/SLAM/main.png";
 
 function App() {
   const routes = [
@@ -24,6 +60,9 @@ function App() {
 
   const [route, setRoute] = useState(() => getRouteFromHash());
   const [projectFilter, setProjectFilter] = useState("All");
+  const [achievementFilter, setAchievementFilter] = useState("All");
+  const getProjectCategories = (category: string | string[]) =>
+    Array.isArray(category) ? category : [category];
 
   useEffect(() => {
     const handleHashChange = () => setRoute(getRouteFromHash());
@@ -211,7 +250,7 @@ function App() {
                       />
                     </svg>
                   </span>
-                  <p className="mini-title">Achievements</p>
+                  <p className="mini-title">Technical Achievements</p>
                 </div>
                 <div className="achievement-grid">
                   <div className="achievement-item">
@@ -223,8 +262,8 @@ function App() {
                         />
                       </svg>
                     </span>
-                    <h3>8</h3>
-                    <p>Total Awards</p>
+                    <h3>10</h3>
+                    <p>Total Technical Achievements</p>
                   </div>
                   <div className="achievement-item">
                     <span className="achievement-icon">
@@ -301,6 +340,7 @@ function App() {
                   description:
                     "Combines EEG signals with audio processing to isolate a listener's attended speaker in multi-speaker environments.",
                   tech: "Python, PyTorch, MATLAB, EEGLAB",
+                  image: NSImage,
                 },
                 {
                   title: "PCB Defects Detection Device",
@@ -328,47 +368,52 @@ function App() {
                   description:
                     "Uses SuperGlue for accurate feature matching and seamless blending across viewpoints.",
                   tech: "SuperGlue, Python, OpenCV, PyTorch, RANSAC",
+                  image: panoramaImg,
                 },
                 {
-                  title:
-                    "Bidirectional Mapping on Multimodal Neuroimaging Data",
-                  category: "AI & ML",
+                  title: "Monocular RGB SLAM in Dynamic Environments",
+                  category: ["AI & ML", "Robotics"],
                   date: "Ongoing",
                   description:
-                    "Contrastive model linking brain structure and function using HCP/OASIS datasets.",
-                  tech: "Python, PyTorch",
+                    "A robust monocular RGB SLAM system that uses uncertainty-aware tracking and mapping for dynamic object removal.",
+                  tech: "Python, PyTorch, Gaussian Splatting",
+                  image: slamImg,
                 },
                 {
                   title: "OboMouse - Micromouse Robot",
-                  category: "Robotics",
+                  category: ["Robotics", "Embedded"],
                   date: "Champions (MicroMaze 2024)",
                   description:
                     "Autonomous maze-solving robot using high-speed sensors and optimization algorithms.",
                   tech: "STM32, C, Altium, SolidWorks",
+                  image: micromouseImg,
                 },
                 {
                   title: "Robot Nanonaut",
-                  category: "Robotics",
+                  category: ["Robotics", "Embedded"],
                   date: "—",
                   description:
                     "Multifunction robot capable of line-following, obstacle avoidance, gripping, and sound recognition.",
                   tech: "Arduino, SolidWorks, Altium",
+                  image: nanonautImg,
                 },
                 {
                   title: "SpeedObo - High-Precision Line Follower",
-                  category: "Robotics",
+                  category: ["Robotics", "Embedded"],
                   date: "—",
                   description:
                     "High-speed, high-accuracy line follower robot for competitive robotics.",
                   tech: "STM32, C++, Altium, SolidWorks",
+                  image: speedoboImg,
                 },
                 {
                   title: "MetroniX Battlebot",
-                  category: "Robotics",
+                  category: ["Robotics", "Embedded"],
                   date: "UWV Robot Battle 2024",
                   description:
                     "Combat robot featuring a dynamic lifting mechanism and RF-based control.",
                   tech: "Arduino, Altium, SolidWorks",
+                  image: battlebotImg,
                 },
                 {
                   title: "Metroband - Tempo-Keeping Wristband",
@@ -377,6 +422,7 @@ function App() {
                   description:
                     "Wearable tempo-keeping wristband with vibration cues and beat detection.",
                   tech: "C++, Altium, SolidWorks, Python",
+                  image: metrobandImg,
                 },
                 {
                   title: "Analog Guitar Pedal Board",
@@ -385,14 +431,16 @@ function App() {
                   description:
                     "Analogue guitar effects pedal board with six sound-processing modules.",
                   tech: "Analog Circuits, LTspice, Altium",
+                  image: guitarPedalImg,
                 },
                 {
                   title: "Sportsense - AI Sports Trainer",
-                  category: "Software",
+                  category: ["Software", "AI & ML"],
                   date: "Idealize 2024 (1st Runner-Up)",
                   description:
                     "Real-time CV-based posture and movement analyzer for personalized training feedback.",
                   tech: "Kotlin, Firebase, Mediapipe, YOLO",
+                  image: sportsenseImg,
                 },
                 {
                   title: "Signify - Speech-to-Sign-Language AR Glasses",
@@ -401,39 +449,35 @@ function App() {
                   description:
                     "AR system translating speech into sign language in real-time for hearing-impaired users.",
                   tech: "Unity, Blender, OpenCV, Mediapipe",
+                  image: signifyImg,
                 },
                 {
                   title: "PMF Analysis Agent",
-                  category: "Software",
+                  category: ["Software", "AI & ML"],
                   date: "Ongoing",
                   description:
                     "AI-driven Product-Market Fit analyzer for SaaS companies using behavioral insights.",
                   tech: "React, Node.js, LangGraph, Python, AWS",
+                  image: pmfAnalyzerImg,
                 },
                 {
                   title: "Xplore - Travel Companion App",
-                  category: "Software",
+                  category: ["Software", "AI & ML"],
                   date: "—",
                   description:
                     "Mobile app providing personalized travel planning and location-based insights.",
                   tech: "Next.js, React, Firestore, Firebase Storage",
-                },
-                {
-                  title: "Data Analysis Agent",
-                  category: "Software",
-                  date: "—",
-                  description:
-                    "Intelligent agent for automated analysis and reporting on financial data.",
-                  tech: "React, AWS, Express.js, Python",
+                  image: xploreImg,
                 },
                 {
                   title:
                     "Crystal Clear - Platform for Assisting Dyslexic Students",
-                  category: "Software",
+                  category: ["Software", "AI & ML"],
                   date: "Imagine Cup 2024",
                   description:
                     "AI-powered personalized learning platform using computer vision and voice recognition.",
                   tech: "React, React Native, TensorFlow",
+                  image: dyslexiaImg,
                 },
                 {
                   title: "PCB Company Web Application",
@@ -442,12 +486,15 @@ function App() {
                   description:
                     "Full-stack web system with six subsystems for managing PCB company operations.",
                   tech: "Java, Spring Boot, MongoDB, React",
+                  image: pcbCompanyImg,
                 },
               ]
                 .filter(
                   (project) =>
                     projectFilter === "All" ||
-                    project.category === projectFilter
+                    getProjectCategories(project.category).includes(
+                      projectFilter
+                    )
                 )
                 .map((project) => (
                   <article
@@ -462,7 +509,18 @@ function App() {
                       )}
                     </div>
                     <div className="project-meta">
-                      <span className="tag">{project.category}</span>
+                      <div className="tag-group">
+                        {getProjectCategories(project.category).map(
+                          (category) => (
+                            <span
+                              key={`${project.title}-${category}`}
+                              className="tag"
+                            >
+                              {category}
+                            </span>
+                          )
+                        )}
+                      </div>
                       <span className="project-date">{project.date}</span>
                     </div>
                     <h4>{project.title}</h4>
@@ -480,9 +538,9 @@ function App() {
               <h3>Academics</h3>
               <p>Education milestones and academic highlights.</p>
             </div>
-            <div className="list-grid">
+            <div className="project-grid">
               <div className="list-item">
-                <h4>University of Moratuwa, Sri Lanka — 2022 - Present</h4>
+                <h4>University of Moratuwa, Sri Lanka | 2022 - Present</h4>
                 <p>
                   B.Sc. Honours in Electronic and Telecommunication Engineering
                   (CGPA: 3.81/4.00)
@@ -492,12 +550,13 @@ function App() {
                 </p>
               </div>
               <div className="list-item">
-                <h4>St. Anthony&apos;s College, Kandy — 2007 - 2020</h4>
+                <h4>St. Anthony&apos;s College, Kandy | 2007 - 2020</h4>
                 <p>
                   Passed GCE A/L Examination with 3A&apos;s in Physical Stream
                   (University Entrance Examination)
                 </p>
                 <p className="muted">Z-score: 2.3016</p>
+                <p>Winner of Best Student in Physics for the Year 2025 Award</p>
               </div>
             </div>
           </section>
@@ -534,28 +593,203 @@ function App() {
           </section>
         )} */}
 
-        {/* {route === "/achievements" && (
+        {route === "/achievements" && (
           <section className="section">
             <div className="section-header">
               <h3>Achievements</h3>
               <p>Milestones I&apos;m proud of.</p>
             </div>
+            <div className="project-filters">
+              {[
+                "All",
+                "Technical & Innovation Competitions",
+                "Academic Excellence",
+                "Leadership & AIESEC",
+                "Music & Performing Arts",
+                "Sports",
+              ].map((filter) => (
+                <button
+                  key={filter}
+                  type="button"
+                  className={
+                    achievementFilter === filter
+                      ? "filter-chip active"
+                      : "filter-chip"
+                  }
+                  onClick={() => setAchievementFilter(filter)}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
             <div className="list-grid">
-              <div className="list-item">
-                <h4>Best Innovation Award</h4>
-                <p>Recognized for a predictive maintenance solution.</p>
-              </div>
-              <div className="list-item">
-                <h4>Top 1% Kaggle Ranking</h4>
-                <p>Active competitor in tabular and vision challenges.</p>
-              </div>
-              <div className="list-item">
-                <h4>Speaker</h4>
-                <p>Presented on ML deployment at regional tech meets.</p>
-              </div>
+              {[
+                {
+                  title: "Champions - VR Cade 2025 (Mixed Reality Competition)",
+                  category: "Technical & Innovation Competitions",
+                  description: "IEEE IAS at UoM",
+                  image: achievementVRCadeImg,
+                },
+                {
+                  title: "Champions - MicroMaze 2024 (Micromouse)",
+                  category: "Technical & Innovation Competitions",
+                  description: "IEEE RAS at IIT",
+                  image: achievementMicroMazeImg,
+                },
+                {
+                  title:
+                    "1st Runner-Up - Idealize 2024 (Ideathon & Mobile App)",
+                  category: "Technical & Innovation Competitions",
+                  description: "AIESEC UoM",
+
+                  image: achievementIdealizeRunnerUpImg,
+                },
+
+                {
+                  title: "2nd Runner-Up - Robofest 2024 (Micromouse)",
+                  category: "Technical & Innovation Competitions",
+                  description: "SLIIT",
+                  image: achievementRobofestImg,
+                },
+                {
+                  title: "5th Place - SPARK 2024 Innovation Competition",
+                  category: "Technical & Innovation Competitions",
+                  description: "Electronic Club UoM",
+                  image: achievementSparkImg,
+                },
+                {
+                  title: "7th Place - UWU Robot Battle Competition",
+                  category: "Technical & Innovation Competitions",
+                  image: achievementBattlebotImg,
+                },
+
+                {
+                  title: "Conceptualist Award - Idealize 2024",
+                  category: "Technical & Innovation Competitions",
+                  description: "AIESEC UoM",
+                  image: achievementIdealizeConceptualistImg,
+                },
+                {
+                  title:
+                    "Finalist - Brainstorm 2024 (Sri Lanka’s Premier Healthcare Innovation Competition)",
+                  category: "Technical & Innovation Competitions",
+                  image: achievementBrainstormImg,
+                },
+                {
+                  title: "Finalist - IESL Startup Challenge 20205",
+                  category: "Technical & Innovation Competitions",
+                  image: achievementIESLImg,
+                },
+                {
+                  title:
+                    "Semifinalist - Microsoft ImagineCup 2024 (AI-Driven Student Startups)",
+                  category: "Technical & Innovation Competitions",
+                  image: achievementImagineCupImg,
+                },
+
+                {
+                  title:
+                    "Dean’s List - 6/7 semesters (Level 1 (Sem 1 & 2), Level 2 (Sem 2), Level 3 (Sem 1 & 2))",
+                  category: "Academic Excellence",
+                  description: "University of Moratuwa",
+                  image: achievementDeansListImg,
+                },
+                {
+                  title: "Winner - Best Student in Physics of the Year (2020)",
+                  category: "Academic Excellence",
+                  image: achievementPhysicsImg,
+                  description: "St. Anthony’s College Kandy",
+                },
+
+                {
+                  title: "Best Young Leader Nominee",
+                  category: "Leadership & AIESEC",
+                  description: "AIESEC Sri Lanka (2022)",
+                  image: achievementBylImg,
+                },
+
+                {
+                  title: "Best Team Leader & Best Project of the Quarter - IGV",
+                  category: "Leadership & AIESEC",
+                  description: "AIESEC UoM",
+                  image: achievementIgvImg,
+                },
+                {
+                  title: "Second Best Leader - AMPLIFIER 2021",
+                  category: "Leadership & AIESEC",
+                  description: "AIESEC Sri Lanka",
+                  image: achievementIdealizeImg,
+                },
+
+                {
+                  title:
+                    "Finalist - Chathurmana ’23 (Inter-University Talent Competition)",
+                  category: "Music & Performing Arts",
+                  description: "Choir TripleG",
+                  image: achievementChathurmanaImg,
+                },
+                {
+                  title: "Winner - Best Musician of the Year (2019)",
+                  category: "Music & Performing Arts",
+                  description: "St. Anthony’s College Kandy",
+                  image: achievementMusicianImg,
+                },
+                {
+                  title:
+                    "First Place - Three times| All-Island Choir Competitions ",
+                  category: "Music & Performing Arts",
+                  description: "2019, 2017, 2015",
+                  image: achievementChoirImg,
+                },
+                {
+                  title:
+                    "Second Place - Two Times | All-Island Choir Competitions ",
+                  category: "Music & Performing Arts",
+                  description: "2018, 2016",
+                  image: achievementChoir2Img,
+                },
+                {
+                  title: "Runner-Up - Inter-School Basketball Tournament",
+                  category: "Sports",
+                  description: "2016",
+                  image: achievementBasketballImg,
+                },
+                {
+                  title: "Runner-Up - Zonal Chess Championship",
+                  category: "Sports",
+                  description: "2015",
+                  image: achievementChessImg,
+                },
+              ]
+                .filter(
+                  (achievement) =>
+                    achievementFilter === "All" ||
+                    achievement.category === achievementFilter
+                )
+                .map((achievement) => (
+                  <article
+                    key={`${achievement.title}-${achievement.category}`}
+                    className="project-card"
+                  >
+                    <div className="project-media">
+                      {achievement.image ? (
+                        <img src={achievement.image} alt={achievement.title} />
+                      ) : (
+                        "Achievement image"
+                      )}
+                    </div>
+                    <div className="project-meta">
+                      <span className="tag">{achievement.category}</span>
+                    </div>
+                    <h4>{achievement.title}</h4>
+                    {achievement.description && (
+                      <p>{achievement.description}</p>
+                    )}
+                  </article>
+                ))}
             </div>
           </section>
-        )} */}
+        )}
 
         {/* {route === "/news" && (
           // <section className="section">
