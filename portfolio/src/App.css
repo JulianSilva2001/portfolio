@@ -508,6 +508,30 @@
   color: var(--text-subtle);
 }
 
+.mini-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mini-card-header .mini-title {
+  margin-right: auto;
+}
+
+.mini-action {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: #2563eb;
+  border: 1px solid rgba(37, 99, 235, 0.8);
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.35);
+}
+
 .tools-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

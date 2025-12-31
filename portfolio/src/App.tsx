@@ -227,6 +227,7 @@ function App() {
                     </svg>
                   </span>
                   <p className="mini-title">Education &amp; Academics</p>
+                  <span className="mini-action">View all</span>
                 </div>
                 <h3>University of Moratuwa, Sri Lanka | 2022 - Present</h3>
                 <p>
@@ -255,6 +256,7 @@ function App() {
                     </svg>
                   </span>
                   <p className="mini-title">Work Experiences</p>
+                  <span className="mini-action">View all</span>
                 </div>
                 <h3>Embedded &amp; ML Engineering Intern</h3>
                 <p>Paraqum Technologies (Pvt) Ltd, Sri Lanka</p>
@@ -276,6 +278,7 @@ function App() {
                     </svg>
                   </span>
                   <p className="mini-title">Current Project</p>
+                  <span className="mini-action">View all</span>
                 </div>
                 <h3>Project Categories &amp; Tools</h3>
                 <div className="tools-grid">
@@ -316,11 +319,12 @@ function App() {
                     </svg>
                   </span>
                   <p className="mini-title">Technical Achievements</p>
+                  <span className="mini-action">View all</span>
                 </div>
                 <div className="achievement-grid">
-                  <div className="achievement-item">
-                    <span className="achievement-icon">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                <div className="achievement-item">
+                  <span className="achievement-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path
                           d="M8 4h8a1 1 0 0 1 1 1v3a4 4 0 0 1-4 4h-2a4 4 0 0 1-4-4V5a1 1 0 0 1 1-1Zm2 9.5V15h4v-1.5a6 6 0 0 1-2 0 6 6 0 0 1-2 0ZM6 6H4a1 1 0 0 0-1 1v1a3 3 0 0 0 3 3h.5A6 6 0 0 1 6 6Zm12 0a6 6 0 0 1-.5 5H18a3 3 0 0 0 3-3V7a1 1 0 0 0-1-1h-2Z"
                           fill="currentColor"
