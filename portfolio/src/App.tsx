@@ -199,6 +199,20 @@ function App() {
                     LinkedIn
                   </a>
                   <a
+                    href="https://medium.com/@silva.ljjp"
+                    className="icon-link"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M4 6.5c0-.83.67-1.5 1.5-1.5h13c.83 0 1.5.67 1.5 1.5v11c0 .83-.67 1.5-1.5 1.5h-13C4.67 19 4 18.33 4 17.5v-11Zm4.2 9.25V8.25l3.35 4.92 3.35-4.92v7.5h1.7V7h-1.86l-3.19 4.73L8.36 7H6.5v8.75h1.7Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Medium
+                  </a>
+                  <a
                     href={cvPdf}
                     className="icon-link"
                     target="_blank"
@@ -1235,6 +1249,19 @@ function App() {
                   />
                 </svg>
               </a>
+              <a
+                href="https://medium.com/@silva.ljjp"
+                aria-label="Medium"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M4 6.5c0-.83.67-1.5 1.5-1.5h13c.83 0 1.5.67 1.5 1.5v11c0 .83-.67 1.5-1.5 1.5h-13C4.67 19 4 18.33 4 17.5v-11Zm4.2 9.25V8.25l3.35 4.92 3.35-4.92v7.5h1.7V7h-1.86l-3.19 4.73L8.36 7H6.5v8.75h1.7Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
               <a href={cvPdf} target="_blank" rel="noreferrer" aria-label="CV">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path
@@ -1264,6 +1291,9 @@ function App() {
             </a>
             <a href="https://www.linkedin.com/in/julian-silva-1abb98263/">
               LinkedIn Profile
+            </a>
+            <a href="https://medium.com/@silva.ljjp" target="_blank" rel="noreferrer">
+              Medium Blog
             </a>
           </div>
         </div>
