@@ -17,6 +17,7 @@ import signifyImg from "./assets/Projects/Signify/main.png";
 import sportsenseImg from "./assets/Projects/Sportsense/main.jpg";
 import xploreImg from "./assets/Projects/Xplore/main.jpg";
 import speedoboImg from "./assets/Projects/SpeedObo/main.jpeg";
+import ekfSlamImg from "./assets/Projects/EKF_SLAM/main.png";
 import achievementBattlebotImg from "./assets/Achievements/battlebot.jpeg";
 import achievementBrainstormImg from "./assets/Achievements/Brainstorm.jpeg";
 import achievementDeansListImg from "./assets/Achievements/deansList.png";
@@ -36,9 +37,41 @@ import achievementChoirImg from "./assets/Achievements/choir.jpg";
 import achievementChoir2Img from "./assets/Achievements/choir2.jpg";
 import achievementIgvImg from "./assets/Achievements/igv.jpeg";
 import achievementMusicianImg from "./assets/Achievements/musician.jpeg";
+import internshipTeaGradesImg from "./assets/Internship/Tea/Tea_grades.png";
+import internshipTeaPipelineImg from "./assets/Internship/Tea/pipeline.png";
+import internshipTeaOutputImg from "./assets/Internship/Tea/output.png";
+import internshipTestJigAppImg from "./assets/Internship/TestJig/app.png";
+import internshipTestJigRelayImg from "./assets/Internship/TestJig/relayMatrix.png";
+import internshipTestJigBoardImg from "./assets/Internship/TestJig/testJig.png";
 import achievementIdealizeImg from "./assets/Achievements/amplifier.jpg";
 import achievementChathurmanaImg from "./assets/Achievements/chathurmana.jpeg";
 import slamImg from "./assets/Projects/SLAM/main.png";
+import teaGrades from "./assets/Internship/Tea/Tea_grades.png";
+import teaPipeImg from "./assets/Internship/Tea/pipeline.png";
+import teaOutput from "./assets/Internship/Tea/output.png";
+import roboticGenProgrammeImg from "./assets/Rgen/programme.jpeg";
+import roboticGenSchoolImg from "./assets/Rgen/school.jpeg";
+import roboticGenMoraForesightImg from "./assets/Rgen/Moraforesight.jpeg";
+import roboticGenMoraForesightAltImg from "./assets/Rgen/Moraforesight2.jpeg";
+import roboticGenSessionImg from "./assets/Rgen/WhatsApp Image 2025-12-31 at 11.33.23.jpeg";
+import compereBasketballImg from "./assets/Others/Public_Speaking/Basketball Tournament.jpg";
+import compereCarolServiceImg from "./assets/Others/Public_Speaking/Carol_Service.jpg";
+import compereColoursAwards23Img from "./assets/Others/Public_Speaking/Colours_awards_23.jpg";
+import compereColoursAwards24Img from "./assets/Others/Public_Speaking/Colours_Awards_24.jpg";
+import compereEnvoyageImg from "./assets/Others/Public_Speaking/Envoyage.jpg";
+import compereGlobalVillageImg from "./assets/Others/Public_Speaking/Global Village.jpg";
+import compereIdealize2023Img from "./assets/Others/Public_Speaking/Idealize_2023.jpg";
+import compereMoraForesightAwardingImg from "./assets/Others/Public_Speaking/Moraforesight Awarding Ceremony.jpg";
+import compereSlrcFinalsImg from "./assets/Others/Public_Speaking/SLRC_Finals.jpg";
+import compereSlugBaseballImg from "./assets/Others/Public_Speaking/SLUG_basballe.jpg";
+import aestheticsAbhinaDanceImg from "./assets/Others/Aesthetics/Abhina_Dance.jpeg";
+import aestheticsAbhinaDramaImg from "./assets/Others/Aesthetics/Abhina_drama.jpeg";
+import aestheticsAbhinaInstrumentsImg from "./assets/Others/Aesthetics/Abhina_Instruments.jpeg";
+import aestheticsAnnualCarolConductImg from "./assets/Others/Aesthetics/Annual Unviersity Carol Service_Conduct.jpeg";
+import aestheticsBeatboxTronicImg from "./assets/Others/Aesthetics/BeatBox_TronicPadura.jpg";
+import aestheticsChathurmanaChoirImg from "./assets/Others/Aesthetics/Chathurmana_Choir.jpg";
+import aestheticsColomboCarolsConductImg from "./assets/Others/Aesthetics/Sri Lanka Universities Colombo Region Carols_Conduct.jpeg";
+import aestheticsYathraChoirImg from "./assets/Others/Aesthetics/Yathra_choir.jpeg";
 
 function App() {
   const routes = [
@@ -47,7 +80,7 @@ function App() {
     { label: "Academics", path: "/academics" },
     { label: "Achievements", path: "/achievements" },
     { label: "Experiences", path: "/experiences" },
-    { label: "News", path: "/news" },
+    { label: "Other", path: "/news" },
   ];
 
   const getRouteFromHash = () => {
@@ -61,6 +94,7 @@ function App() {
   const [route, setRoute] = useState(() => getRouteFromHash());
   const [projectFilter, setProjectFilter] = useState("All");
   const [achievementFilter, setAchievementFilter] = useState("All");
+  const [newsFilter, setNewsFilter] = useState("All");
   const getProjectCategories = (category: string | string[]) =>
     Array.isArray(category) ? category : [category];
 
@@ -108,7 +142,13 @@ function App() {
                 <div className="simple-interests">
                   <span className="simple-interest-chip">Machine Learning</span>
                   <span className="simple-interest-chip">Computer Vision</span>
-                  <span className="simple-interest-chip">HCI</span>
+                  <span className="simple-interest-chip">
+                    Human Computer Interaction
+                  </span>
+                  <span className="simple-interest-chip">
+                    Brain Computer Interfaces
+                  </span>
+                  <span className="simple-interest-chip">Generative AI</span>
                   <span className="simple-interest-chip">Embedded Systems</span>
                   <span className="simple-interest-chip">Robotics</span>
                 </div>
@@ -380,6 +420,15 @@ function App() {
                   image: slamImg,
                 },
                 {
+                  title: "EKF SLAM in ROS",
+                  category: ["Robotics"],
+                  date: "2024",
+                  description:
+                    "Implemented EKF-based SLAM in ROS for real-time localization and mapping with noisy sensor streams.",
+                  tech: "ROS, Python, EKF",
+                  image: ekfSlamImg,
+                },
+                {
                   title: "OboMouse - Micromouse Robot",
                   category: ["Robotics", "Embedded"],
                   date: "Champions (MicroMaze 2024)",
@@ -562,36 +611,199 @@ function App() {
           </section>
         )}
 
-        {/* {route === "/experiences" && (
+        {route === "/experiences" && (
           <section className="section">
             <div className="section-header">
               <h3>Experiences</h3>
-              <p>Hands-on experience delivering production-grade systems.</p>
+              <p>Industry, teaching, and mentoring roles.</p>
             </div>
             <div className="timeline">
               <div className="timeline-item">
                 <div>
-                  <h4>Machine Learning Engineer</h4>
-                  <p className="muted">Nova Labs Aú 2023 ƒ?" Present</p>
+                  <h4>Embedded &amp; ML Engineering Intern</h4>
+                  <p className="muted">
+                    Paraqum Technologies (Pvt) Ltd, Sri Lanka
+                  </p>
                 </div>
-                <p>
-                  Built forecasting services, automated feature pipelines, and
-                  deployed real-time monitoring across ML workflows.
-                </p>
+                <div className="timeline-detail">
+                  <h5>Where I Worked</h5>
+                  <p>
+                    Company Divisions: Embedded Systems, Analog Inference,
+                    Network Solutions, Marketing &amp; Human Resource
+                  </p>
+                  <p className="muted">
+                    Established: 2014 | CEO: Dr Ajith Pasqual
+                  </p>
+                  <div className="experience-two-col">
+                    <div className="timeline-subsection">
+                      <h5>1. Tea Quality Signature Generation</h5>
+                      <p className="muted">AI + Computer Vision</p>
+                      <p>
+                        A vision-based system to generate a digital signature
+                        for tea samples, enabling faster and more consistent
+                        quality assessment.
+                      </p>
+                      <p className="muted">
+                        Traditional tea grading can delay distribution by up to
+                        three weeks. This system supports faster
+                        decision-making.
+                      </p>
+                      <div className="experience-media">
+                        <img src={teaGrades} alt="Tea quality signature" />
+                      </div>
+
+                      <h6>What I worked on</h6>
+                      <ul>
+                        <li>Tea image analysis using deep learning</li>
+                        <li>Feature extraction for quality indicators</li>
+                        <li>
+                          AI-assisted interpretation of tea characteristics
+                        </li>
+                      </ul>
+
+                      <div className="experience-media">
+                        <img src={teaPipeImg} alt="Tea model pipeline" />
+                      </div>
+
+                      <h6>Outputs (visual-first)</h6>
+                      <ul>
+                        <li>Tea grade image comparisons</li>
+                        <li>Quality feature visualizations</li>
+                        <li>End-to-end pipeline diagrams</li>
+                      </ul>
+
+                      <div className="experience-media">
+                        <img src={teaOutput} alt="Tea quality output charts" />
+                      </div>
+                    </div>
+                    <div className="timeline-subsection">
+                      <h5>3. Industrial Test Jig System</h5>
+                      <p className="muted">Hardware + Software Integration</p>
+                      <p>
+                        A complete testing system used to validate Receiver and
+                        Key-Fob PCBs during production.
+                      </p>
+                      <h6>What I delivered</h6>
+                      <ul>
+                        <li>
+                          Full-stack web application for automated testing
+                        </li>
+                        <li>Hardware-software integration for diagnostics</li>
+                        <li>Structured test workflows for production use</li>
+                      </ul>
+                      <h6>Key-Fob tests</h6>
+                      <ul>
+                        <li>RGB LED</li>
+                        <li>EEPROM</li>
+                        <li>Microcontroller</li>
+                        <li>Battery voltage</li>
+                        <li>Idle power consumption</li>
+                        <li>Button inputs</li>
+                      </ul>
+                      <h6>Receiver tests</h6>
+                      <ul>
+                        <li>RGB LED</li>
+                        <li>Learn &amp; reset switches</li>
+                        <li>Logic inputs</li>
+                        <li>Configuration switches</li>
+                        <li>RNG, EEPROM, fuses</li>
+                        <li>Power supplies &amp; microcontroller</li>
+                      </ul>
+                      <div className="experience-media-grid">
+                        <div className="experience-media">
+                          <img
+                            src={internshipTestJigAppImg}
+                            alt="Test jig application UI"
+                          />
+                        </div>
+                        <div className="experience-media">
+                          <img
+                            src={internshipTestJigBoardImg}
+                            alt="PCB under test"
+                          />
+                        </div>
+                        <div className="experience-media">
+                          <img
+                            src={internshipTestJigRelayImg}
+                            alt="Relay matrix wiring"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className="timeline-item">
                 <div>
-                  <h4>Full Stack Developer</h4>
-                  <p className="muted">Pulse Systems Aú 2021 ƒ?" 2023</p>
+                  <h4>Robotics Instructor</h4>
+                  <p className="muted">
+                    RoboticGen Academy (Pvt) Ltd, Sri Lanka
+                  </p>
                 </div>
-                <p>
-                  Delivered customer portals, internal dashboards, and API
-                  services used by 30k+ monthly users.
-                </p>
+                <div className="timeline-detail">
+                  <h5>Teaching &amp; Mentorship</h5>
+                  <p>
+                    Led robotics sessions for students across multiple age
+                    groups, with a focus on hands-on builds and problem-solving.
+                  </p>
+                  <div className="experience-media-grid">
+                    <figure className="experience-figure">
+                      <div className="experience-media">
+                        <img
+                          src={roboticGenProgrammeImg}
+                          alt="RoboticGen weekly programme session"
+                        />
+                      </div>
+                      <figcaption className="experience-caption">
+                        RoboticGen programme, One-on-one student mentoring
+                      </figcaption>
+                    </figure>
+
+                    <figure className="experience-figure">
+                      <div className="experience-media">
+                        <img
+                          src={roboticGenSchoolImg}
+                          alt="Robotics outreach at schools"
+                        />
+                      </div>
+                      <figcaption className="experience-caption">
+                        School outreach programmes
+                      </figcaption>
+                    </figure>
+                    <figure className="experience-figure">
+                      <div className="experience-media">
+                        <img
+                          src={roboticGenMoraForesightImg}
+                          alt="MoraForesight robotics session"
+                        />
+                      </div>
+                      <figcaption className="experience-caption">
+                        MoraForesight top-100 selection session
+                      </figcaption>
+                    </figure>
+                    <figure className="experience-figure">
+                      <div className="experience-media">
+                        <img
+                          src={roboticGenMoraForesightAltImg}
+                          alt="MoraForesight mentoring activity"
+                        />
+                      </div>
+                      <figcaption className="experience-caption">
+                        Robotics workshops and demos
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+              <div className="timeline-item">
+                <div>
+                  <h4>Physics Tutor (Edexcel O/L - IGCSE)</h4>
+                  <p className="muted">Keenbridge English Academy (Pvt) Ltd</p>
+                </div>
               </div>
             </div>
           </section>
-        )} */}
+        )}
 
         {route === "/achievements" && (
           <section className="section">
@@ -791,31 +1003,167 @@ function App() {
           </section>
         )}
 
-        {/* {route === "/news" && (
-          // <section className="section">
-          //   <div className="section-header">
-          //     <h3>News</h3>
-          //     <p>Recent updates, events, and publications.</p>
-          //   </div>
-          //   <div className="list-grid">
-          //     <div className="list-item">
-          //       <h4>Volunteer Developer for FloodSupport Sri Lanka</h4>
-          //       <p>
-          //         Built a disaster analytics dashboard for emergency response
-          //         coordination.
-          //       </p>
-          //     </div>
-          //     <div className="list-item">
-          //       <h4>DVCon India 2025 - 1st Runners-Up</h4>
-          //       <p>Recognized for an FPGA-based inference accelerator.</p>
-          //     </div>
-          //     <div className="list-item">
-          //       <h4>Campus Tech Talk</h4>
-          //       <p>Presented on deploying ML models on edge devices.</p>
-          //     </div>
-          //   </div>
-          // </section>
-        )} */}
+        {route === "/news" && (
+          <section className="section">
+            <div className="section-header">
+              <h3>News</h3>
+              <p>Compere appearances and aesthetics performances.</p>
+            </div>
+            <div className="project-filters">
+              {["All", "Compere", "Aesthetics"].map((filter) => (
+                <button
+                  key={filter}
+                  type="button"
+                  className={
+                    newsFilter === filter ? "filter-chip active" : "filter-chip"
+                  }
+                  onClick={() => setNewsFilter(filter)}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
+            <div className="project-grid">
+              {[
+                {
+                  title: "Carol Service",
+                  category: "Compere",
+                  description:
+                    "Hosted the annual carol service of University of Moratuwa.",
+                  image: compereCarolServiceImg,
+                },
+                {
+                  title: "Colours Awards 2023",
+                  category: "Compere",
+                  description: "Compere for Colours Awards 2023.",
+                  image: compereColoursAwards23Img,
+                },
+                {
+                  title: "Colours Awards 2024",
+                  category: "Compere",
+                  description: "Compere for Colours Awards 2024.",
+                  image: compereColoursAwards24Img,
+                },
+                {
+                  title: "Envoyage",
+                  category: "Compere",
+                  description:
+                    "Hosted Envoyage organized by the Department of ENTC.",
+                  image: compereEnvoyageImg,
+                },
+                {
+                  title: "Basketball Tournament",
+                  category: "Compere",
+                  description:
+                    "Hosted the Inter-University basketball tournament program.",
+                  image: compereBasketballImg,
+                },
+                {
+                  title: "Global Village",
+                  category: "Compere",
+                  description: "Compere for the Global Village showcase.",
+                  image: compereGlobalVillageImg,
+                },
+                {
+                  title: "Idealize 2023",
+                  category: "Compere",
+                  description: "Compere for the Idealize 2023 event.",
+                  image: compereIdealize2023Img,
+                },
+                {
+                  title: "MoraForesight Awarding Ceremony",
+                  category: "Compere",
+                  description: "Hosted the MoraForesight awarding ceremony.",
+                  image: compereMoraForesightAwardingImg,
+                },
+                {
+                  title: "SLRC Finals",
+                  category: "Compere",
+                  description: "Compere for the SLRC Grand Finale.",
+                  image: compereSlrcFinalsImg,
+                },
+                {
+                  title: "SLUG Baseball Ceremony",
+                  category: "Compere",
+                  description: "Hosted the SLUG Baseball Ceremonies.",
+                  image: compereSlugBaseballImg,
+                },
+
+                {
+                  title: "Annual University Carol Service",
+                  category: "Aesthetics",
+                  description: "Conducted the annual university carol service.",
+                  image: aestheticsAnnualCarolConductImg,
+                },
+
+                {
+                  title: "Colombo Region Carols",
+                  category: "Aesthetics",
+                  description: "Conducted Colombo Region university carols.",
+                  image: aestheticsColomboCarolsConductImg,
+                },
+
+                {
+                  title: "Abhina Dance",
+                  category: "Aesthetics",
+                  description: "Dance performance at Abhina.",
+                  image: aestheticsAbhinaDanceImg,
+                },
+                {
+                  title: "Abhina Drama",
+                  category: "Aesthetics",
+                  description: "Drama performance at Abhina.",
+                  image: aestheticsAbhinaDramaImg,
+                },
+                {
+                  title: "Abhina Instruments",
+                  category: "Aesthetics",
+                  description: "Instrumental performance at Abhina.",
+                  image: aestheticsAbhinaInstrumentsImg,
+                },
+
+                {
+                  title: "BeatBox Tronic Padura",
+                  category: "Aesthetics",
+                  description: "Beatbox performance at Tronic Padura.",
+                  image: aestheticsBeatboxTronicImg,
+                },
+                {
+                  title: "Chathurmana Choir",
+                  category: "Aesthetics",
+                  description: "Choir performance at Chathurmana.",
+                  image: aestheticsChathurmanaChoirImg,
+                },
+
+                {
+                  title: "Yathra Choir",
+                  category: "Aesthetics",
+                  description: "Choir performance at Yathra.",
+                  image: aestheticsYathraChoirImg,
+                },
+              ]
+                .filter(
+                  (newsItem) =>
+                    newsFilter === "All" || newsItem.category === newsFilter
+                )
+                .map((newsItem) => (
+                  <article
+                    key={`${newsItem.title}-${newsItem.category}`}
+                    className="project-card"
+                  >
+                    <div className="project-media">
+                      <img src={newsItem.image} alt={newsItem.title} />
+                    </div>
+                    <div className="project-meta">
+                      <span className="tag">{newsItem.category}</span>
+                    </div>
+                    <h4>{newsItem.title}</h4>
+                    <p>{newsItem.description}</p>
+                  </article>
+                ))}
+            </div>
+          </section>
+        )}
       </main>
     </div>
   );
