@@ -201,7 +201,8 @@ function App() {
                   <a
                     href={cvPdf}
                     className="icon-link"
-                    download="Julian_Silva_CV.pdf"
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                       <path
@@ -1234,7 +1235,7 @@ function App() {
                   />
                 </svg>
               </a>
-              <a href={cvPdf} download="Julian_Silva_CV.pdf" aria-label="CV">
+              <a href={cvPdf} target="_blank" rel="noreferrer" aria-label="CV">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path
                     d="M12 3a1 1 0 0 1 1 1v8.17l2.59-2.58a1 1 0 1 1 1.41 1.42l-4.3 4.29a1 1 0 0 1-1.4 0l-4.3-4.29a1 1 0 0 1 1.41-1.42L11 12.17V4a1 1 0 0 1 1-1Zm-7 14a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"
@@ -1248,7 +1249,7 @@ function App() {
             <h4>Quick Links</h4>
             <a href="#/">Home</a>
             <a href="#/projects">Projects</a>
-            <a href={cvPdf} download="Julian_Silva_CV.pdf">
+            <a href={cvPdf} target="_blank" rel="noreferrer">
               CV
             </a>
             <a href="#/news">News</a>
