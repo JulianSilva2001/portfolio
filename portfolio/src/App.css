@@ -36,16 +36,12 @@
   padding: 48px 0 32px;
   border-top: 1px solid rgba(148, 163, 184, 0.2);
   position: relative;
-  background: radial-gradient(
-      circle at 20% 20%,
+  background: radial-gradient(circle at 20% 20%,
       rgba(37, 99, 235, 0.2),
-      transparent 45%
-    ),
-    radial-gradient(
-      circle at 80% 10%,
+      transparent 45%),
+    radial-gradient(circle at 80% 10%,
       rgba(34, 211, 238, 0.18),
-      transparent 50%
-    ),
+      transparent 50%),
     linear-gradient(120deg, rgba(5, 10, 20, 0.9), rgba(11, 18, 32, 0.95));
   border-radius: 28px;
   overflow: hidden;
@@ -55,10 +51,8 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(
-      rgba(148, 197, 255, 0.4) 1px,
-      transparent 1px
-    ),
+  background-image: radial-gradient(rgba(148, 197, 255, 0.4) 1px,
+      transparent 1px),
     radial-gradient(rgba(148, 197, 255, 0.25) 1px, transparent 1px);
   background-size: 120px 120px, 180px 180px;
   background-position: 10px 10px, 40px 70px;
@@ -840,8 +834,29 @@
   background: rgba(15, 23, 42, 0.75);
   border: 1px solid rgba(148, 163, 184, 0.2);
   border-radius: 20px;
-  padding: 22px;
+  padding: 28px;
   box-shadow: 0 12px 30px rgba(15, 23, 42, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(2, 6, 23, 0.6);
+  border-color: rgba(96, 165, 250, 0.4);
+}
+
+.featured-project {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  box-shadow: 0 16px 40px rgba(251, 191, 36, 0.08);
+}
+
+.featured-project:hover {
+  border-color: rgba(251, 191, 36, 0.6);
+  box-shadow: 0 24px 50px rgba(251, 191, 36, 0.15);
 }
 
 .info-card h4,
@@ -936,7 +951,7 @@
 }
 
 .project-grid {
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
 }
 
 .project-filters {
@@ -984,9 +999,40 @@
   color: var(--text-subtle);
 }
 
-.project-tech {
-  font-size: 12px;
+
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-card h4 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: #f1f5f9;
+}
+
+.project-card p {
+  flex-grow: 1;
+  margin-bottom: 20px !important;
+  line-height: 1.7;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.tech-chip {
+  font-size: 11px;
   color: #94a3b8;
+  background: rgba(30, 41, 59, 0.5);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(148, 163, 184, 0.15);
 }
 
 .project-card p,
@@ -997,7 +1043,7 @@
 
 .project-media {
   width: 100%;
-  height: 160px;
+  height: 220px;
   border-radius: 16px;
   border: 1px dashed rgba(148, 163, 184, 0.35);
   background: rgba(15, 23, 42, 0.5);
@@ -1007,8 +1053,26 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--text-subtle);
-  margin-bottom: 12px;
+  margin-bottom: 20px;
   overflow: hidden;
+  position: relative;
+}
+
+.project-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(251, 191, 36, 0.9);
+  color: #1e293b;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  z-index: 10;
 }
 
 .project-media img {
@@ -1020,52 +1084,70 @@
 
 .experience-media-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
-  margin-top: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
 }
 
-.experience-figure {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+@media (min-width: 640px) {
+  .experience-media-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .experience-media {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  height: auto;
-  border-radius: 16px;
-  border: 1px dashed rgba(148, 163, 184, 0.35);
+  border-radius: 12px;
   background: rgba(15, 23, 42, 0.5);
-  display: grid;
-  place-items: center;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-subtle);
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  height: 100%;
 }
 
 .experience-media img {
   width: 100%;
-  height: 100%;
+  height: 180px;
+  /* Fixed height for uniformity */
+  object-fit: cover;
+  display: block;
+}
+
+.experience-media-full {
+  width: 100%;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.experience-media-full img {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
   object-fit: contain;
   display: block;
-  background: #0b1220;
 }
 
-.experience-caption {
-  font-size: 12px;
-  color: var(--text-subtle);
-  letter-spacing: 0.2px;
+.code-block {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  font-family: monospace;
+  font-size: 13px;
+  color: #e2e8f0;
 }
 
-.tag {
-  display: inline-flex;
-  font-size: 12px;
-  text-transform: uppercase;
+.code-block code {
+  white-space: pre-wrap;
+}
+
+.experience-figure {
+  margin: 0;
   letter-spacing: 1.4px;
   color: var(--accent);
 }
@@ -1097,6 +1179,7 @@
     opacity: 0;
     transform: translateY(16px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1104,10 +1187,12 @@
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-12px);
   }
@@ -1244,4 +1329,21 @@
   .achievement-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.process-content {
+  padding: 12px 16px 16px;
+}
+
+.process-content h6 {
+  margin: 0 0 8px 0;
+  color: #fff;
+  font-size: 14px;
+}
+
+.process-content p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-subtle);
+  line-height: 1.5;
 }
