@@ -1,0 +1,9 @@
+This folder contains folder containing audio samples comparing the performance of NeuroCodec against the ground-truth targets. Each set includes:
+
+X_input_noisy: The original input containing multiple speakers.
+
+X_target_clean: The ground-truth audio we aim to extract.
+
+X_prediction: The final speech reconstructed by our model.
+
+The samples demonstrate that our model effectively removes the interfering speaker while keeping the target speaker's voice clear and natural. Unlike traditional models that often let the interfering speaker leak through, NeuroCodec’s generative approach ensures a clean result by reconstructing the voice directly from neural signals.
