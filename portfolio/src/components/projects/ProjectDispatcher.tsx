@@ -15,6 +15,7 @@ import Signify from "./Signify";
 import Battlebot from "./Battlebot";
 import CrystalClear from "./CrystalClear";
 import PCBCompany from "./PCBCompany";
+import CrowdNavigationRL from "./CrowdNavigationRL";
 
 
 
@@ -95,6 +96,9 @@ const ProjectDispatcher = ({ route }: { route: string }) => {
     }
     if (projectId === "pcb-company-app") {
         return <PCBCompany />;
+    }
+    if (projectId === "drl-crowd-navigation") {
+        return <CrowdNavigationRL />;
     }
 
     // For now, return placeholder until we generate the files

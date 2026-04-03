@@ -4,7 +4,7 @@ import dyslexiaImg from "../assets/Projects/Dyslexia/main.jpg";
 import pcbDefectsImg from "../assets/Projects/PCB Defects/main.jpg";
 import panoramaImg from "../assets/Projects/Panorama/main.jpg";
 import teaDefectsImg from "../assets/Projects/Tea/main.png";
-import NSImage from "../assets/Projects/EEG_Fusion/main.png";
+import NSImage from "../assets/Projects/EEG_Fusion/Neurocodec.png";
 import guitarPedalImg from "../assets/Projects/GuitarPedal/main.png";
 import metrobandImg from "../assets/Projects/Metroband/main.png";
 import micromouseImg from "../assets/Projects/Micromouse/main.jpeg";
@@ -17,6 +17,7 @@ import xploreImg from "../assets/Projects/Xplore/main.jpg";
 import speedoboImg from "../assets/Projects/SpeedObo/main.jpeg";
 import ekfSlamImg from "../assets/Projects/EKF_SLAM/main.png";
 import slamImg from "../assets/Projects/SLAM/main.png";
+import rlCrowdImg from "../assets/Projects/RL/output_hall.gif";
 
 const Projects = () => {
     const [projectFilter, setProjectFilter] = useState("All");
@@ -56,8 +57,8 @@ const Projects = () => {
                         category: "AI & ML",
                         date: "Ongoing",
                         description:
-                            "A Deep Learning framework combining EEG signals with audio processing to isolate a listener's attended speaker in complex multi-speaker environments.",
-                        tech: "Python, PyTorch, MATLAB, EEGLAB, Conditional GANs",
+                            "Generative EEG-guided target speaker extraction that predicts neural codec latents for high-fidelity (44.1 kHz) speech reconstruction in multi-speaker scenes.",
+                        tech: "Python, PyTorch, MATLAB, EEGLAB, DAC, Causal Mamba",
                         image: NSImage,
                         highlight: "Final Year Project",
                     },
@@ -103,6 +104,17 @@ const Projects = () => {
                             "A robust Monocular RGB SLAM system enhancing 3D Gaussian Splatting with uncertainty-aware tracking to map dynamic environments effectively.",
                         tech: "Python, PyTorch, 3D Gaussian Splatting, CUDA",
                         image: slamImg,
+                    },
+                    {
+                        id: "drl-crowd-navigation",
+                        title: "Deep RL Crowd Navigation (Graph + Mamba)",
+                        category: ["AI & ML", "Robotics"],
+                        date: "Ongoing",
+                        description:
+                            "Real-time crowd navigation policy combining Kalman Filtering Graph Networks and selective state space modeling for robust, low-latency robot behavior in dense dynamic scenes.",
+                        tech: "Python, PyTorch, PPO, GNN, Mamba, LiDAR",
+                        image: rlCrowdImg,
+                        highlight: "Research Project",
                     },
                     {
                         id: "ekf-slam-ros",

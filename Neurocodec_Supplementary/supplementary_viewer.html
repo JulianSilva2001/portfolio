@@ -1,0 +1,347 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Neurocodec Supplementary Samples</title>
+    <style>
+    :root {
+      --bg: #f5f6f7;
+      --ink: #12212f;
+      --muted: #4f6271;
+      --line: #d3dfe8;
+      --card: #ffffff;
+      --accent: #2f3a44;    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+    main {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.45rem, 2.8vw, 2rem);
+      letter-spacing: 0.01em;
+    }
+    .sub {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+    .review-note {
+      background: #f8f9fa;
+      border: 1px solid var(--line);
+      border-left: 4px solid #9aa6b2;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 0 0 18px;
+    }
+    .review-note h2 {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+      color: #2f3a44;
+    }
+    .review-note ol {
+      margin: 0;
+      padding-left: 1.2rem;
+      display: grid;
+      gap: 10px;
+    }
+    .review-note li {
+      line-height: 1.35;
+      color: #2b3440;
+    }
+    .review-note li strong {
+      color: #1b2732;
+    }
+
+    .sample {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 18px;
+      box-shadow: none;
+    }
+    .sample h2 {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 1.06rem;
+      font-weight: 700;
+    }
+
+    .rows {
+      display: grid;
+      gap: 10px;
+    }
+
+    .col-head {
+      display: grid;
+      grid-template-columns: 230px 1fr 320px;
+      gap: 10px;
+      padding: 0 6px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 230px 1fr 320px;
+      gap: 10px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px;
+      background: #fbfdff;
+    }
+
+                        .row.ours {
+      border: 2px solid #22a06b;
+      border-left: 6px solid #22a06b;
+      box-shadow: inset 0 0 0 1px rgba(34, 160, 107, 0.16);
+      background: #f6fffb;
+    }
+
+    .label {
+      font-weight: 700;
+      color: var(--ink);
+      padding-top: 2px;
+      line-height: 1.3;
+    }
+
+    .media img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      display: block;
+      background: #fff;
+    }
+
+    .audio {
+      min-width: 0;
+      padding-top: 2px;
+    }
+
+    .fname {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+      word-break: break-word;
+    }
+
+    audio {
+      width: 100%;
+      min-height: 34px;
+    }
+
+    .missing {
+      color: #8a4a3f;
+      background: #fff6f3;
+      border: 1px dashed #e1b4a8;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 980px) {
+      .col-head {
+        display: none;
+      }
+      .row {
+        grid-template-columns: 1fr;
+      }
+      .label {
+        padding-top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Neurocodec Results Comparison </h1>
+    <p class="sub">Results on the Cocktail Party dataset. M3ANet is the existing state-of-the-art (SOTA) baseline model.</p>
+<p class="sub">Order per sample: Mixture, Target, M3ANet, Ours (Neurocodec), Without Mel and GAN losses.</p>
+    <section class="review-note">
+      <h2>Key Highlights</h2>
+      <ol>
+        <li>
+          <strong>Full-Bandwidth Reconstruction (NeuroCodec vs. M3ANet):</strong>
+          M3ANet is band-limited to 14.7 kHz (sharp cutoff around 7.3 kHz), while NeuroCodec reconstructs at 44.1 kHz and preserves high-frequency cues.
+        </li>
+        <li>
+          <strong>Generative vs. Discriminative Extraction (NeuroCodec vs. M3ANet):</strong>
+          M3ANet uses masking and can leak interferer speech; NeuroCodec uses a generative strategy to synthesize the target voice and better suppress background-speaker interference.
+        </li>
+        <li>
+          <strong>Impact of Mel and GAN Losses (NeuroCodec vs. Ablated Model):</strong>
+          Mel loss preserves harmonic structure and timbre, while adversarial loss reduces robotic over-smoothing and improves perceptual naturalness. The "Without Mel and GAN losses" rows illustrate this degradation.
+        </li>
+      </ol>
+    </section>
+<section class="sample">
+<h2>Sample_1</h2>
+<div class="rows">
+<div class="col-head"><div>Method</div><div>Spectrogram</div><div>Audio</div></div>
+<article class="row mix">
+<div class="label">Mixture</div>
+<div class="media"><img loading="lazy" src="Cocktail Party/Samples/Sample_1/Mixture_1.png" alt="Mixture_1.png" /></div>
+<div class="audio">
+<div class="fname">Mixture_1.wav</div>
+<audio controls preload="none" src="Cocktail Party/Samples/Sample_1/Mixture_1.wav"></audio>
+</div>
+</article>
+<article class="row target">
+<div class="label">Target</div>
+<div class="media"><img loading="lazy" src="Cocktail Party/Samples/Sample_1/Target_1.png" alt="Target_1.png" /></div>
+<div class="audio">
+<div class="fname">Target_1.wav</div>
+<audio controls preload="none" src="Cocktail Party/Samples/Sample_1/Target_1.wav"></audio>
+</div>
+</article>
+<article class="row m3anet">
+<div class="label">M3ANet</div>
+<div class="media"><img loading="lazy" src="Cocktail Party/Samples/Sample_1/Predicted_M3ANet_1.png" alt="Predicted_M3ANet_1.png" /></div>
+<div class="audio">
+<div class="fname">Predicted_M3ANet_1.wav</div>
+<audio controls preload="none" src="Cocktail Party/Samples/Sample_1/Predicted_M3ANet_1.wav"></audio>
+</div>
+</article>
+<article class="row ours">
+<div class="label">Ours (Neurocodec)</div>
+<div class="media"><img loading="lazy" src="Cocktail Party/Samples/Sample_1/Predicted_Neurocodec_1.png" alt="Predicted_Neurocodec_1.png" /></div>
+<div class="audio">
+<div class="fname">Predicted_Neurocodec_1.wav</div>
+<audio controls preload="none" src="Cocktail Party/Samples/Sample_1/Predicted_Neurocodec_1.wav"></audio>
+</div>
+</article>
+<article class="row ablated">
+<div class="label">Without Mel and GAN losses (lower performance)</div>
+<div class="media"><img loading="lazy" src="Cocktail Party/Samples/Sample_1/Predicted_Lmse_Only_1.png" alt="Predicted_Lmse_Only_1.png" /></div>
+<div class="audio">
+<div class="fname">Predicted_Lmse_Only_1.wav</div>
+<audio controls preload="none" src="Cocktail Party/Samples/Sample_1/Predicted_Lmse_Only_1.wav"></audio>
+</div>
+</article>
+</div>
+</section>
+
+<section class="sample">
+<h2>Sample_2</h2>
+<div class="rows">
+<div class="col-head"><div>Method</div><div>Spectrogram</div><div>Audio</div></div>
+<article class="row mix">
+<div class="label">Mixture</div>
+<div class="media"><img loading="lazy" src="Cocktail Party/Samples/Sample_2/Mixture_2.png" alt="Mixture_2.png" /></div>
+<div class="audio">
+<div class="fname">Mixture_2.wav</div>
+<audio controls preload="none" src="Cocktail Party/Samples/Sample_2/Mixture_2.wav"></audio>
+</div>
+</article>
+<article class="row target">
+<div class="label">Target</div>
+<div class="media"><img loading="lazy" src="Cocktail Party/Samples/Sample_2/Target_2.png" alt="Target_2.png" /></div>
+<div class="audio">
+<div class="fname">Target_2.wav</div>
+<audio controls preload="none" src="Cocktail Party/Samples/Sample_2/Target_2.wav"></audio>
+</div>
+</article>
+<article class="row m3anet">
+<div class="label">M3ANet</div>
+<div class="media"><img loading="lazy" src="Cocktail Party/Samples/Sample_2/Predicted_M3ANet_2.png" alt="Predicted_M3ANet_2.png" /></div>
+<div class="audio">
+<div class="fname">Predicted_M3ANet_2.wav</div>
+<audio controls preload="none" src="Cocktail Party/Samples/Sample_2/Predicted_M3ANet_2.wav"></audio>
+</div>
+</article>
+<article class="row ours">
+<div class="label">Ours (Neurocodec)</div>
+<div class="media"><img loading="lazy" src="Cocktail Party/Samples/Sample_2/Predicted_Neurocodec_2.png" alt="Predicted_Neurocodec_2.png" /></div>
+<div class="audio">
+<div class="fname">Predicted_Neurocodec_2.wav</div>
+<audio controls preload="none" src="Cocktail Party/Samples/Sample_2/Predicted_Neurocodec_2.wav"></audio>
+</div>
+</article>
+<article class="row ablated">
+<div class="label">Without Mel and GAN losses (lower performance)</div>
+<div class="media"><img loading="lazy" src="Cocktail Party/Samples/Sample_2/Predicted_Lmse_only_2.png" alt="Predicted_Lmse_only_2.png" /></div>
+<div class="audio">
+<div class="fname">Predicted_Lmse_only_2.wav</div>
+<audio controls preload="none" src="Cocktail Party/Samples/Sample_2/Predicted_Lmse_only_2.wav"></audio>
+</div>
+</article>
+</div>
+</section>
+
+<section class="sample">
+<h2>Sample_3</h2>
+<div class="rows">
+<div class="col-head"><div>Method</div><div>Spectrogram</div><div>Audio</div></div>
+<article class="row mix">
+<div class="label">Mixture</div>
+<div class="media"><img loading="lazy" src="Cocktail Party/Samples/Sample_3/Mixture_3.png" alt="Mixture_3.png" /></div>
+<div class="audio">
+<div class="fname">Mixture_3.wav</div>
+<audio controls preload="none" src="Cocktail Party/Samples/Sample_3/Mixture_3.wav"></audio>
+</div>
+</article>
+<article class="row target">
+<div class="label">Target</div>
+<div class="media"><img loading="lazy" src="Cocktail Party/Samples/Sample_3/Target_3.png" alt="Target_3.png" /></div>
+<div class="audio">
+<div class="fname">Target_3.wav</div>
+<audio controls preload="none" src="Cocktail Party/Samples/Sample_3/Target_3.wav"></audio>
+</div>
+</article>
+<article class="row m3anet">
+<div class="label">M3ANet</div>
+<div class="media"><img loading="lazy" src="Cocktail Party/Samples/Sample_3/Predicted_M3ANet_3.png" alt="Predicted_M3ANet_3.png" /></div>
+<div class="audio">
+<div class="fname">Predicted_M3ANet_3.wav</div>
+<audio controls preload="none" src="Cocktail Party/Samples/Sample_3/Predicted_M3ANet_3.wav"></audio>
+</div>
+</article>
+<article class="row ours">
+<div class="label">Ours (Neurocodec)</div>
+<div class="media"><img loading="lazy" src="Cocktail Party/Samples/Sample_3/Predicted_Neurocodec_3.png" alt="Predicted_Neurocodec_3.png" /></div>
+<div class="audio">
+<div class="fname">Predicted_Neurocodec_3.wav</div>
+<audio controls preload="none" src="Cocktail Party/Samples/Sample_3/Predicted_Neurocodec_3.wav"></audio>
+</div>
+</article>
+<article class="row ablated">
+<div class="label">Without Mel and GAN losses (lower performance)</div>
+<div class="media"><img loading="lazy" src="Cocktail Party/Samples/Sample_3/Predicted_Lmse_Only_3.png" alt="Predicted_Lmse_Only_3.png" /></div>
+<div class="audio">
+<div class="fname">Predicted_Lmse_Only_3.wav</div>
+<audio controls preload="none" src="Cocktail Party/Samples/Sample_3/Predicted_Lmse_Only_3.wav"></audio>
+</div>
+</article>
+</div>
+</section>
+
+  </main>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
